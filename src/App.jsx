@@ -686,6 +686,21 @@ function Projects({ t, lang }) {
 }
 
 function Contact({ t }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get("name") || "";
+    const email = formData.get("email") || "";
+    const message = formData.get("message") || "";
+    const subject = encodeURIComponent(`Portfolio contact from ${name || "visitor"}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+
+    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <Section id="contact" kicker={t.contactKicker} title={t.contactTitle}>
       <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
@@ -720,11 +735,15 @@ function Contact({ t }) {
             </a>
           </div>
         </div>
-        <form className="min-w-0 rounded border border-ink/12 bg-white/60 p-4 shadow-line backdrop-blur sm:p-6">
+        <form
+          className="min-w-0 rounded border border-ink/12 bg-white/60 p-4 shadow-line backdrop-blur sm:p-6"
+          onSubmit={handleSubmit}
+        >
           <label className="grid gap-2 text-sm font-black text-ink/60">
             {t.name}
             <input
               className="min-w-0 rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
+              name="name"
               placeholder="Musa Vakilov"
               type="text"
             />
@@ -733,6 +752,7 @@ function Contact({ t }) {
             Email
             <input
               className="min-w-0 rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
+              name="email"
               placeholder={contact.email}
               type="email"
             />
@@ -741,16 +761,17 @@ function Contact({ t }) {
             {t.message}
             <textarea
               className="min-h-36 min-w-0 resize-none rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
+              name="message"
               placeholder="..."
             />
           </label>
-          <a
+          <button
             className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded bg-cobalt px-5 py-4 font-black text-white shadow-lift transition hover:-translate-y-1 hover:bg-ink"
-            href={`mailto:${contact.email}`}
+            type="submit"
           >
             {t.send}
             <ArrowRight size={18} />
-          </a>
+          </button>
         </form>
       </div>
     </Section>
