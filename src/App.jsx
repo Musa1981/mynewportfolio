@@ -637,10 +637,10 @@ function Projects({ t, lang }) {
             className="group overflow-hidden rounded border border-ink/12 bg-white/70 shadow-line transition duration-300 hover:-translate-y-2 hover:shadow-lift"
             key={project.title}
           >
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden bg-ink/5">
               <img
                 alt={project.title}
-                className="aspect-[16/11] w-full object-cover transition duration-500 group-hover:scale-105"
+                className="aspect-[16/11] w-full object-contain p-2 transition duration-500 group-hover:scale-[1.03] sm:p-3"
                 src={project.image}
               />
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-ember via-mint to-cobalt" />
@@ -747,10 +747,7 @@ function Contact({ t }) {
           </div>
         </div>
         <form
-          action={`mailto:${contact.email}`}
           className="min-w-0 rounded border border-ink/12 bg-white/60 p-4 shadow-line backdrop-blur sm:p-6"
-          encType="text/plain"
-          method="post"
           onSubmit={handleEmailSubmit}
         >
           <label className="grid gap-2 text-sm font-black text-ink/60">
