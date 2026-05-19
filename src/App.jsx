@@ -348,7 +348,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-paper text-ink">
+    <div className="min-h-screen overflow-x-hidden bg-paper text-ink">
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(rgba(17,24,39,.075)_1px,transparent_1px),linear-gradient(90deg,rgba(17,24,39,.075)_1px,transparent_1px)] bg-[size:42px_42px]" />
       <div className="fixed inset-0 -z-10 opacity-75 [background:linear-gradient(115deg,#f7f4ed_0%,#f0fbf7_34%,#fff2e3_68%,#eef3ff_100%)]" />
       <div className="fixed inset-0 -z-10 opacity-40 [background:repeating-linear-gradient(115deg,transparent_0px,transparent_42px,rgba(37,99,235,.12)_43px,transparent_44px)]" />
@@ -462,23 +462,23 @@ function Hero({ t, jumpTo }) {
       className="relative flex min-h-screen items-center px-4 pb-14 pt-24 sm:px-5 sm:pb-16 sm:pt-28"
       id="home"
     >
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_.98fr] lg:gap-12">
-        <div className="max-w-4xl">
-          <div className="mb-6 inline-flex max-w-full animate-reveal items-center gap-2 rounded border border-ink/15 bg-white/60 px-3 py-2 text-xs font-bold shadow-line backdrop-blur sm:mb-7 sm:text-sm">
-            <Sparkles size={17} className="text-ember" />
-            {t.badge}
+      <div className="mx-auto grid w-full min-w-0 max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_.98fr] lg:gap-12">
+        <div className="min-w-0 max-w-full lg:max-w-4xl">
+          <div className="mb-6 flex w-full max-w-full animate-reveal items-start gap-2 rounded border border-ink/15 bg-white/60 px-3 py-2 text-xs font-bold leading-snug shadow-line backdrop-blur sm:mb-7 sm:inline-flex sm:w-auto sm:items-center sm:text-sm">
+            <Sparkles size={17} className="shrink-0 text-ember" />
+            <span className="min-w-0 break-words">{t.badge}</span>
           </div>
-          <h1 className="animate-reveal font-display text-[clamp(2rem,10vw,5.9rem)] font-black leading-tight text-ink [animation-delay:120ms] sm:leading-[0.95]">
+          <h1 className="max-w-full animate-reveal break-words font-display text-[clamp(1.8rem,8.6vw,5.6rem)] font-black leading-[1.08] text-ink [animation-delay:120ms] sm:leading-[0.95]">
             {t.heroTitle}
           </h1>
-          <div className="mt-5 flex animate-reveal flex-wrap items-end gap-x-3 gap-y-1 font-display [animation-delay:180ms]">
-            <span className="text-2xl font-black text-ink/70 sm:text-4xl">{t.roleIntro}</span>
-            <span className="relative text-3xl font-black text-cobalt sm:text-5xl">
+          <div className="mt-5 flex max-w-full animate-reveal flex-col items-start gap-2 font-display [animation-delay:180ms] sm:flex-row sm:flex-wrap sm:items-end sm:gap-x-3 sm:gap-y-1">
+            <span className="text-xl font-black text-ink/70 sm:text-4xl">{t.roleIntro}</span>
+            <span className="relative max-w-full break-words text-[clamp(1.75rem,8vw,3rem)] font-black leading-tight text-cobalt sm:text-5xl">
               {t.role}
               <span className="absolute -bottom-2 left-0 h-1 w-full origin-left animate-pulseLine rounded bg-gradient-to-r from-ember via-mint to-cobalt" />
             </span>
           </div>
-          <p className="mt-6 max-w-2xl animate-reveal text-base leading-7 text-ink/70 [animation-delay:240ms] sm:mt-7 sm:text-lg sm:leading-8">
+          <p className="mt-6 max-w-2xl animate-reveal break-words text-base leading-7 text-ink/70 [animation-delay:240ms] sm:mt-7 sm:text-lg sm:leading-8">
             {t.heroText}
           </p>
           <div className="mt-7 grid animate-reveal grid-cols-2 gap-3 [animation-delay:300ms] sm:grid-cols-4">
@@ -486,7 +486,7 @@ function Hero({ t, jumpTo }) {
               const Icon = techIcons[item];
               return (
               <span
-                className="relative inline-flex items-center justify-center gap-2 overflow-hidden rounded border border-ink/10 bg-white/55 px-3 py-3 text-center text-sm font-black shadow-line"
+                className="relative inline-flex min-w-0 items-center justify-center gap-2 overflow-hidden rounded border border-ink/10 bg-white/55 px-2 py-3 text-center text-sm font-black shadow-line sm:px-3"
                 key={item}
               >
                 <span className="absolute inset-y-0 left-0 w-10 animate-sweep bg-white/45" />
@@ -531,7 +531,7 @@ function Hero({ t, jumpTo }) {
 
 function HeroVisual({ stats }) {
   return (
-    <div className="relative mx-auto grid w-full max-w-[420px] animate-drift place-items-center sm:max-w-[540px]">
+    <div className="relative mx-auto grid w-full max-w-[330px] animate-drift place-items-center sm:max-w-[540px]">
       <div className="absolute inset-8 rotate-3 rounded border border-ink/15 bg-white/35 shadow-lift backdrop-blur-xl" />
       <div className="absolute inset-16 -rotate-6 rounded border border-ink/15 bg-mint/15 shadow-line" />
       <div className="relative overflow-hidden rounded bg-ink p-4 text-paper shadow-lift sm:p-5">
@@ -566,34 +566,34 @@ function About({ t }) {
   return (
     <Section id="about" kicker={t.aboutKicker} title={t.aboutTitle}>
       <div className="grid gap-8 lg:grid-cols-[.92fr_1.08fr]">
-        <div className="rounded border border-ink/12 bg-white/55 p-6 shadow-line backdrop-blur">
+        <div className="min-w-0 rounded border border-ink/12 bg-white/55 p-5 shadow-line backdrop-blur sm:p-6">
           <div className="flex h-14 w-14 items-center justify-center rounded bg-ember text-white">
             <Layers3 size={26} />
           </div>
-          <p className="mt-8 text-xl font-bold leading-snug text-ink sm:text-2xl">{t.aboutText}</p>
+          <p className="mt-8 break-words text-lg font-bold leading-snug text-ink sm:text-2xl">{t.aboutText}</p>
           <p className="mt-5 leading-7 text-ink/70">{t.aboutSecond}</p>
         </div>
-        <div className="rounded border border-ink/12 bg-ink p-5 text-paper shadow-lift sm:p-7">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="min-w-0 rounded border border-ink/12 bg-ink p-4 text-paper shadow-lift sm:p-7">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-5">
             {skillLogos.map((skill) => (
               <div
                 className="group grid place-items-center gap-3 text-center transition duration-300 hover:-translate-y-2"
                 key={skill.name}
               >
-                <div className="grid h-20 place-items-center transition duration-300 group-hover:scale-110">
+                <div className="grid h-16 place-items-center transition duration-300 group-hover:scale-110 sm:h-20">
                   <SkillLogo {...skill} />
                 </div>
-                <p className="text-base font-bold text-paper sm:text-lg">{skill.name}</p>
+                <p className="break-words text-sm font-bold text-paper sm:text-lg">{skill.name}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="mt-8 rounded border border-ink/12 bg-ink p-5 text-paper shadow-lift sm:p-6">
+      <div className="mt-8 min-w-0 rounded border border-ink/12 bg-ink p-4 text-paper shadow-lift sm:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-mint">{t.expertiseTitle}</p>
-            <p className="mt-3 max-w-2xl text-lg font-semibold leading-7 text-paper/70">{t.expertiseText}</p>
+            <p className="break-words text-sm font-black uppercase tracking-[0.1em] text-mint sm:tracking-[0.16em]">{t.expertiseTitle}</p>
+            <p className="mt-3 max-w-2xl break-words text-base font-semibold leading-7 text-paper/70 sm:text-lg">{t.expertiseText}</p>
           </div>
           <div className="h-1 w-32 origin-right animate-pulseLine rounded bg-gradient-to-r from-ember via-mint to-cobalt" />
         </div>
@@ -613,7 +613,7 @@ function About({ t }) {
                 {items.map((item) => {
                   const ItemIcon = techIcons[item] ?? Code2;
                   return (
-                  <span className="inline-flex items-center gap-1 rounded bg-paper/10 px-2 py-1 text-xs font-bold text-paper/75" key={item}>
+                  <span className="inline-flex min-w-0 items-center gap-1 rounded bg-paper/10 px-2 py-1 text-xs font-bold text-paper/75" key={item}>
                     <ItemIcon size={13} />
                     {item}
                   </span>
@@ -645,15 +645,15 @@ function Projects({ t, lang }) {
               />
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-ember via-mint to-cobalt" />
             </div>
-            <div className="p-5 sm:p-6">
-              <div className="mb-8 flex items-center justify-between">
-                <span className="rounded border border-ink/10 bg-paper px-3 py-1 text-xs font-black uppercase text-ink/60">
+            <div className="min-w-0 p-5 sm:p-6">
+              <div className="mb-8 flex min-w-0 items-center justify-between gap-3">
+                <span className="min-w-0 rounded border border-ink/10 bg-paper px-3 py-1 text-xs font-black uppercase text-ink/60">
                   {project.type}
                 </span>
                 <p className="text-sm font-black text-cobalt">0{index + 1}</p>
               </div>
-              <h3 className="text-2xl font-black sm:text-3xl">{project.title}</h3>
-              <p className="mt-5 min-h-28 leading-7 text-ink/68">{project[lang]}</p>
+              <h3 className="break-words text-2xl font-black sm:text-3xl">{project.title}</h3>
+              <p className="mt-5 min-h-0 break-words leading-7 text-ink/68 sm:min-h-28">{project[lang]}</p>
               <a
                 className="mt-6 inline-flex items-center gap-2 rounded bg-ink px-4 py-3 font-black text-paper transition hover:-translate-y-1 hover:bg-cobalt"
                 href={project.url}
@@ -668,7 +668,7 @@ function Projects({ t, lang }) {
         ))}
       </div>
       <div className="mt-10 overflow-hidden border-y border-ink/10 py-5">
-        <div className="flex w-max animate-marquee gap-10 text-xl font-black uppercase tracking-[0.18em] text-ink/35">
+        <div className="flex w-max animate-marquee gap-7 text-base font-black uppercase tracking-[0.12em] text-ink/35 sm:gap-10 sm:text-xl sm:tracking-[0.18em]">
           {Array.from({ length: 2 }).map((_, groupIndex) => (
             <div className="flex gap-10" key={groupIndex}>
               <span>React</span>
@@ -689,9 +689,9 @@ function Contact({ t }) {
   return (
     <Section id="contact" kicker={t.contactKicker} title={t.contactTitle}>
       <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
-        <div className="rounded bg-ink p-5 text-paper shadow-lift sm:p-8">
+        <div className="min-w-0 rounded bg-ink p-5 text-paper shadow-lift sm:p-8">
           <Mail size={34} className="text-mint" />
-          <p className="mt-8 text-2xl font-black leading-tight sm:mt-10 sm:text-3xl">{t.contactText}</p>
+          <p className="mt-8 break-words text-xl font-black leading-tight sm:mt-10 sm:text-3xl">{t.contactText}</p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
               className="inline-flex max-w-full items-center gap-3 break-all rounded bg-paper px-4 py-4 text-sm font-black text-ink transition hover:-translate-y-1 sm:px-5 sm:text-base"
@@ -720,11 +720,11 @@ function Contact({ t }) {
             </a>
           </div>
         </div>
-        <form className="rounded border border-ink/12 bg-white/60 p-6 shadow-line backdrop-blur">
+        <form className="min-w-0 rounded border border-ink/12 bg-white/60 p-5 shadow-line backdrop-blur sm:p-6">
           <label className="grid gap-2 text-sm font-black text-ink/60">
             {t.name}
             <input
-              className="rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
+              className="min-w-0 rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
               placeholder="Musa Vakilov"
               type="text"
             />
@@ -732,7 +732,7 @@ function Contact({ t }) {
           <label className="mt-5 grid gap-2 text-sm font-black text-ink/60">
             Email
             <input
-              className="rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
+              className="min-w-0 rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
               placeholder={contact.email}
               type="email"
             />
@@ -740,7 +740,7 @@ function Contact({ t }) {
           <label className="mt-5 grid gap-2 text-sm font-black text-ink/60">
             {t.message}
             <textarea
-              className="min-h-36 resize-none rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
+              className="min-h-36 min-w-0 resize-none rounded border border-ink/15 bg-paper px-4 py-4 text-base font-semibold text-ink outline-none transition focus:border-cobalt focus:bg-white"
               placeholder="..."
             />
           </label>
@@ -759,14 +759,14 @@ function Contact({ t }) {
 
 function Section({ id, kicker, title, children }) {
   return (
-    <section className="px-4 py-20 sm:px-5 sm:py-28" id={id}>
-      <div className="mx-auto max-w-7xl">
+    <section className="px-4 py-16 sm:px-5 sm:py-28" id={id}>
+      <div className="mx-auto min-w-0 max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-cobalt sm:text-sm sm:tracking-[0.22em]">
               {kicker}
             </p>
-            <h2 className="mt-3 font-display text-4xl font-black sm:text-7xl">{title}</h2>
+            <h2 className="mt-3 break-words font-display text-3xl font-black sm:text-7xl">{title}</h2>
           </div>
           <div className="hidden h-1 w-40 origin-right animate-pulseLine rounded bg-ink/30 sm:block" />
         </div>
