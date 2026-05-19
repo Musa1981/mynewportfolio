@@ -468,7 +468,7 @@ function Hero({ t, jumpTo }) {
             <Sparkles size={17} className="text-ember" />
             {t.badge}
           </div>
-          <h1 className="animate-reveal font-display text-[clamp(2.45rem,13vw,7.5rem)] font-black leading-[0.95] text-ink [animation-delay:120ms] sm:leading-[0.9]">
+          <h1 className="animate-reveal font-display text-[clamp(2rem,10vw,5.9rem)] font-black leading-tight text-ink [animation-delay:120ms] sm:leading-[0.95]">
             {t.heroTitle}
           </h1>
           <div className="mt-5 flex animate-reveal flex-wrap items-end gap-x-3 gap-y-1 font-display [animation-delay:180ms]">
