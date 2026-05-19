@@ -207,7 +207,7 @@ function SkillLogo({ name, color }) {
 
   if (name === ".NET") {
     return (
-      <div className="grid h-16 w-20 place-items-center text-4xl font-black sm:h-20 sm:w-24" style={{ color }}>
+      <div className="grid h-12 w-16 place-items-center text-3xl font-black sm:h-20 sm:w-24 sm:text-4xl" style={{ color }}>
         .NET
       </div>
     );
@@ -215,8 +215,8 @@ function SkillLogo({ name, color }) {
 
   if (name === "MySQL") {
     return (
-      <div className="grid h-16 w-20 place-items-center sm:h-20 sm:w-24">
-        <span className="text-2xl font-black sm:text-3xl" style={{ color }}>
+      <div className="grid h-12 w-16 place-items-center sm:h-20 sm:w-24">
+        <span className="text-xl font-black sm:text-3xl" style={{ color }}>
           MySQL
         </span>
       </div>
@@ -377,7 +377,7 @@ function App() {
 function Header({ lang, navItems, menuOpen, setLang, setMenuOpen, jumpTo }) {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-ink/10 bg-paper/78 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-4 sm:px-5">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-3 sm:px-5">
         <button
           className="group flex min-w-0 items-center gap-2 font-display text-sm font-black tracking-[0.1em] sm:gap-3 sm:text-base sm:tracking-[0.16em]"
           onClick={() => jumpTo("home")}
@@ -459,7 +459,7 @@ function Header({ lang, navItems, menuOpen, setLang, setMenuOpen, jumpTo }) {
 function Hero({ t, jumpTo }) {
   return (
     <section
-      className="relative flex min-h-screen items-center px-4 pb-14 pt-24 sm:px-5 sm:pb-16 sm:pt-28"
+      className="relative flex min-h-screen items-start px-3 pb-14 pt-20 sm:px-5 sm:pb-16 sm:pt-28 lg:items-center"
       id="home"
     >
       <div className="mx-auto grid w-full min-w-0 max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_.98fr] lg:gap-12">
@@ -531,33 +531,33 @@ function Hero({ t, jumpTo }) {
 
 function HeroVisual({ stats }) {
   return (
-    <div className="relative mx-auto grid w-full max-w-[330px] animate-drift place-items-center sm:max-w-[540px]">
-      <div className="absolute inset-8 rotate-3 rounded border border-ink/15 bg-white/35 shadow-lift backdrop-blur-xl" />
-      <div className="absolute inset-16 -rotate-6 rounded border border-ink/15 bg-mint/15 shadow-line" />
-      <div className="relative overflow-hidden rounded bg-ink p-4 text-paper shadow-lift sm:p-5">
+    <div className="relative mx-auto mt-2 grid w-full max-w-[270px] place-items-center sm:mt-0 sm:max-w-[540px] sm:animate-drift">
+      <div className="absolute inset-8 hidden rotate-3 rounded border border-ink/15 bg-white/35 shadow-lift backdrop-blur-xl sm:block" />
+      <div className="absolute inset-16 hidden -rotate-6 rounded border border-ink/15 bg-mint/15 shadow-line sm:block" />
+      <div className="relative w-full overflow-hidden rounded bg-ink p-3 text-paper shadow-lift sm:p-5">
         <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-ember via-mint to-cobalt" />
         <img
           alt="Musa Vakilov"
           className="aspect-[4/5] w-full rounded object-cover object-center"
           src={profileImage}
         />
-        <div className="mt-5 flex items-center justify-between gap-3">
-          <div>
+        <div className="mt-4 flex items-center justify-between gap-3 sm:mt-5">
+          <div className="min-w-0">
             <p className="text-sm font-bold text-paper/55">Musa Vakilov</p>
-            <p className="text-xl font-black sm:text-2xl">Full Stack Developer</p>
+            <p className="break-words text-lg font-black leading-tight sm:text-2xl">Full Stack Developer</p>
           </div>
-          <Code2 size={24} className="text-mint" />
+          <Code2 size={22} className="shrink-0 text-mint" />
         </div>
-        <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+        <div className="mt-4 grid grid-cols-3 gap-2 sm:mt-5 sm:gap-3">
           {stats.map(([value, label]) => (
-            <div className="rounded border border-white/10 bg-white/10 p-2 sm:p-3" key={label}>
-              <p className="text-base font-black sm:text-xl">{value}</p>
-              <p className="mt-1 text-xs text-paper/60">{label}</p>
+            <div className="min-w-0 rounded border border-white/10 bg-white/10 p-2 sm:p-3" key={label}>
+              <p className="truncate text-sm font-black sm:text-xl">{value}</p>
+              <p className="mt-1 truncate text-[10px] text-paper/60 sm:text-xs">{label}</p>
             </div>
           ))}
         </div>
       </div>
-      <div className="absolute -bottom-2 left-8 right-8 h-1 origin-center animate-pulseLine rounded bg-ink/25" />
+      <div className="absolute -bottom-2 left-8 right-8 hidden h-1 origin-center animate-pulseLine rounded bg-ink/25 sm:block" />
     </div>
   );
 }
@@ -565,22 +565,22 @@ function HeroVisual({ stats }) {
 function About({ t }) {
   return (
     <Section id="about" kicker={t.aboutKicker} title={t.aboutTitle}>
-      <div className="grid gap-8 lg:grid-cols-[.92fr_1.08fr]">
-        <div className="min-w-0 rounded border border-ink/12 bg-white/55 p-5 shadow-line backdrop-blur sm:p-6">
+      <div className="grid w-full gap-8 lg:grid-cols-[.92fr_1.08fr]">
+        <div className="w-full min-w-0 rounded border border-ink/12 bg-white/55 p-4 shadow-line backdrop-blur sm:p-6">
           <div className="flex h-14 w-14 items-center justify-center rounded bg-ember text-white">
             <Layers3 size={26} />
           </div>
-          <p className="mt-8 break-words text-lg font-bold leading-snug text-ink sm:text-2xl">{t.aboutText}</p>
-          <p className="mt-5 leading-7 text-ink/70">{t.aboutSecond}</p>
+          <p className="mt-7 text-base font-bold leading-7 text-ink sm:mt-8 sm:text-2xl sm:leading-snug">{t.aboutText}</p>
+          <p className="mt-5 text-sm leading-7 text-ink/70 sm:text-base">{t.aboutSecond}</p>
         </div>
-        <div className="min-w-0 rounded border border-ink/12 bg-ink p-4 text-paper shadow-lift sm:p-7">
-          <div className="grid grid-cols-2 gap-x-3 gap-y-7 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-5">
+        <div className="w-full min-w-0 overflow-hidden rounded border border-ink/12 bg-ink p-3 text-paper shadow-lift sm:p-7">
+          <div className="grid w-full grid-cols-2 gap-x-2 gap-y-6 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-5">
             {skillLogos.map((skill) => (
               <div
-                className="group grid place-items-center gap-3 text-center transition duration-300 hover:-translate-y-2"
+                className="group grid min-w-0 place-items-center gap-3 overflow-hidden text-center transition duration-300 hover:-translate-y-2"
                 key={skill.name}
               >
-                <div className="grid h-16 place-items-center transition duration-300 group-hover:scale-110 sm:h-20">
+                <div className="grid h-14 place-items-center transition duration-300 group-hover:scale-110 sm:h-20">
                   <SkillLogo {...skill} />
                 </div>
                 <p className="break-words text-sm font-bold text-paper sm:text-lg">{skill.name}</p>
@@ -689,12 +689,12 @@ function Contact({ t }) {
   return (
     <Section id="contact" kicker={t.contactKicker} title={t.contactTitle}>
       <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
-        <div className="min-w-0 rounded bg-ink p-5 text-paper shadow-lift sm:p-8">
+        <div className="min-w-0 rounded bg-ink p-4 text-paper shadow-lift sm:p-8">
           <Mail size={34} className="text-mint" />
-          <p className="mt-8 break-words text-xl font-black leading-tight sm:mt-10 sm:text-3xl">{t.contactText}</p>
+          <p className="mt-7 break-words text-lg font-black leading-tight sm:mt-10 sm:text-3xl">{t.contactText}</p>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
-              className="inline-flex max-w-full items-center gap-3 break-all rounded bg-paper px-4 py-4 text-sm font-black text-ink transition hover:-translate-y-1 sm:px-5 sm:text-base"
+              className="inline-flex max-w-full items-center gap-2 break-all rounded bg-paper px-3 py-4 text-xs font-black text-ink transition hover:-translate-y-1 sm:gap-3 sm:px-5 sm:text-base"
               href={`mailto:${contact.email}`}
             >
               {contact.email}
@@ -720,7 +720,7 @@ function Contact({ t }) {
             </a>
           </div>
         </div>
-        <form className="min-w-0 rounded border border-ink/12 bg-white/60 p-5 shadow-line backdrop-blur sm:p-6">
+        <form className="min-w-0 rounded border border-ink/12 bg-white/60 p-4 shadow-line backdrop-blur sm:p-6">
           <label className="grid gap-2 text-sm font-black text-ink/60">
             {t.name}
             <input
@@ -759,11 +759,11 @@ function Contact({ t }) {
 
 function Section({ id, kicker, title, children }) {
   return (
-    <section className="px-4 py-16 sm:px-5 sm:py-28" id={id}>
+    <section className="px-3 py-16 sm:px-5 sm:py-28" id={id}>
       <div className="mx-auto min-w-0 max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-cobalt sm:text-sm sm:tracking-[0.22em]">
+            <p className="text-xs font-black uppercase tracking-[0.1em] text-cobalt sm:text-sm sm:tracking-[0.22em]">
               {kicker}
             </p>
             <h2 className="mt-3 break-words font-display text-3xl font-black sm:text-7xl">{title}</h2>

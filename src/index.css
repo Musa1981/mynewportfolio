@@ -21,13 +21,41 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
   overflow-x: hidden;
 }
 
 #root {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+#root * {
+  min-width: 0;
+}
+
+#root p,
+#root h1,
+#root h2,
+#root h3,
+#root span,
+#root a,
+#root button,
+#root label {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  #root section,
+  #root article,
+  #root form {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  #root svg {
+    max-width: 100%;
+  }
 }
 
 button,
