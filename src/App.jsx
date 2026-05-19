@@ -686,19 +686,30 @@ function Projects({ t, lang }) {
 }
 
 function Contact({ t }) {
-  const handleSubmit = (event) => {
+  const handleEmailSubmit = (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
+
+    const formData = new FormData(event.currentTarget);
     const name = formData.get("name") || "";
     const email = formData.get("email") || "";
     const message = formData.get("message") || "";
-    const subject = encodeURIComponent(`Portfolio contact from ${name || "visitor"}`);
+    const subject = encodeURIComponent("Portfolio message");
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
 
-    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    window.open(
+      `https://outlook.live.com/mail/0/deeplink/compose?to=${contact.email}&subject=${subject}&body=${body}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (
@@ -736,8 +747,11 @@ function Contact({ t }) {
           </div>
         </div>
         <form
+          action={`mailto:${contact.email}`}
           className="min-w-0 rounded border border-ink/12 bg-white/60 p-4 shadow-line backdrop-blur sm:p-6"
-          onSubmit={handleSubmit}
+          encType="text/plain"
+          method="post"
+          onSubmit={handleEmailSubmit}
         >
           <label className="grid gap-2 text-sm font-black text-ink/60">
             {t.name}
